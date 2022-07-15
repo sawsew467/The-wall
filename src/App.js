@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router";
+import Home from "../src/pages/Home"
+import About from "../src/pages/About"
+import Player from "../src/pages/Player"
+import Albums from "../src/pages/Albums"
+import Favourite from "../src/pages/Favourite"
+import AlbumDetail from "./pages/AlbumDetail";
+import Settings from "./pages/Settings";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<Home></Home>}></Route>
+        <Route path="/home" element={<Home></Home>}></Route>
+        <Route path="/about" element={<About choosen={1}></About>}></Route>
+        <Route path="/player" element={<Player choosen={2}></Player>}></Route>
+        <Route path="/albums" element={<Albums choosen={3}></Albums>}></Route>
+        <Route path="/albumdetail" element={<AlbumDetail choosen={3}></AlbumDetail>}></Route>
+        <Route path="/favourite" element={<Favourite choosen={4}></Favourite>}></Route>
+        <Route path="/settings" element={<Settings choosen={0}></Settings>}></Route>
+      </Routes>
+    </>
   );
 }
 
