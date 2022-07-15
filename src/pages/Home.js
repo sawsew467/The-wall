@@ -125,11 +125,14 @@ function Home() {
                   </button>
                 </div>
               </Link>
-              <a href="https://www.facebook.com/groups/2521686118132675" target="_blank">
+              <a
+                href="https://www.facebook.com/groups/2521686118132675"
+                target="_blank"
+              >
                 <div className="button-container">
                   <span className="mask py-2 px-8">Community</span>
                   <button type="button" name="Hover" className="py-2 px-8">
-                  Community
+                    Community
                   </button>
                 </div>
               </a>
@@ -141,7 +144,7 @@ function Home() {
               bottomRef = el;
             }}
           >
-            <a href="https://www.facebook.com/SawSew467/">
+            <a href="https://www.facebook.com/SawSew467/" target="_blank">
               <div className="font-bold text-lg">
                 Copyright 2022 - David Tran
               </div>
