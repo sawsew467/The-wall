@@ -141,11 +141,11 @@ function Home() {
               bottomRef = el;
             }}
           >
-            <Link to="about">
+            <a href="https://www.facebook.com/SawSew467/">
               <div className="font-bold text-lg">
                 Copyright 2022 - David Tran
               </div>
-            </Link>
+            </a>
             <div className="text-lg text-white font-bold">1985</div>
           </div>
         </div>
