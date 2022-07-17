@@ -1,7 +1,11 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { playListSelector } from "../redux/selector";
 import MiniSongItem from "../components/MiniSongItem";
+import Control from "../components/Control";
 
 function MiniPlayer() {
+  const playList = useSelector(playListSelector);
   return (
     <div className="bg-[#131313] h-full w-3/12 rounded-tr-3xl rounded-br-3xl p-4 z-0 overflow-y-scroll no-scrollbar">
       <div className="relative w-full">
@@ -12,34 +16,15 @@ function MiniPlayer() {
         ></img>
         <div className="absolute bottom-0 left-0 w-full h-3/5 z-10 p-2">
           <div className="w-full h-full rounded-xl backdrop-blur-sm flex flex-col items-center justify-around p-2">
-            <p className="text-lg truncate w-full">
-              Crystal Rose - Bông hồng thủy tinh
-            </p>
-            <p className="text-sm text-[#AFAFAF]">Tâm hồn của đá</p>
-            <div className="flex gap-4">
-              <i className="fa-solid fa-backward-step"></i>
-              <i className="fa-solid fa-pause"></i>
-              <i className="fa-solid fa-forward-step"></i>
-            </div>
-            <input
-              id="small-range"
-              type="range"
-              className="h-[2px] rounded-lg appearance-none cursor-pointer range-sm m-0"
-            ></input>
+            <Control></Control>
           </div>
         </div>
       </div>
       <p className="text-lg mt-4">Playlist</p>
       <div className="">
-        <MiniSongItem></MiniSongItem>
-        <MiniSongItem></MiniSongItem>
-        <MiniSongItem></MiniSongItem>
-        <MiniSongItem></MiniSongItem>
-        <MiniSongItem></MiniSongItem>
-        <MiniSongItem></MiniSongItem>
-        <MiniSongItem></MiniSongItem>
-        <MiniSongItem></MiniSongItem>
-        <MiniSongItem></MiniSongItem>
+        {playList.map((song, index) => (
+          <MiniSongItem key={index} info={song} index={index}></MiniSongItem>
+        ))}
       </div>
     </div>
   );

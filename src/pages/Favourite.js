@@ -1,9 +1,13 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import SongItem from "../components/SongItem";
 import MiniPlayer from "../parts/MiniPlayer";
 import Navigation from "../parts/Navigation";
+import { favouriteListSelector } from "../redux/selector";
 
 function Favourite(props) {
+  const favouriteList = useSelector(favouriteListSelector);
+  // console.log(favouriteList);
   return (
     <>
       <div className="fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center p-10">
@@ -23,19 +27,11 @@ function Favourite(props) {
               </button>
             </div>
             <div className="flex flex-col gap-4">
-              <SongItem></SongItem>
-              <SongItem></SongItem>
-              <SongItem></SongItem>
-              <SongItem></SongItem>
-              <SongItem></SongItem>
-              <SongItem></SongItem>
-              <SongItem></SongItem>
-              <SongItem></SongItem>
-              <SongItem></SongItem>
-              <SongItem></SongItem>
-              <SongItem></SongItem>
-              <SongItem></SongItem>
-              <SongItem></SongItem>
+              {
+                favouriteList.map((song, index) => (
+                  <SongItem key={index} info={song} index={index}></SongItem>
+                ))
+              }
             </div>
           </div>
           <MiniPlayer></MiniPlayer>

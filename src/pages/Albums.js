@@ -1,9 +1,11 @@
 import React from "react";
 import AlbumItem from "../components/AlbumItem";
+import ALBUM_LIST from "../data/albumList";
 import MiniPlayer from "../parts/MiniPlayer";
 import Navigation from "../parts/Navigation";
 
 function Albums(props) {
+  const albums = ALBUM_LIST;
   return (
     <>
       <div className="fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center p-10">
@@ -17,11 +19,11 @@ function Albums(props) {
           <div className="flex-1 p-4 h-full overflow-hidden overflow-y-scroll no-scrollbar">
             <p className="text-xl mb-4">Albums</p>
             <div className="flex flex-col gap-4">
-              <AlbumItem></AlbumItem>
-              <AlbumItem></AlbumItem>
-              <AlbumItem></AlbumItem>
-              <AlbumItem></AlbumItem>
-              <AlbumItem></AlbumItem>
+              {
+                albums.map((album, index) => (
+                  <AlbumItem infoAlbum={album} key={index}></AlbumItem>
+                ))
+              }
             </div>
           </div>
           <MiniPlayer></MiniPlayer>

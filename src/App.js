@@ -6,8 +6,12 @@ import Albums from "../src/pages/Albums"
 import Favourite from "../src/pages/Favourite"
 import AlbumDetail from "./pages/AlbumDetail";
 import Settings from "./pages/Settings";
+import { useSelector } from "react-redux";
+import { playListSelector } from "./redux/selector";
 
 function App() {
+  const playList = useSelector(playListSelector);
+  console.log(playList);
   return (
     <>
       <Routes>
