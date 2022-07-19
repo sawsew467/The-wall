@@ -1,19 +1,27 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateFavouriteList, updatePlayList } from "../redux/actions";
-import { favouriteListSelector, playListSelector } from "../redux/selector";
+import {
+  setCurrentSong,
+  updateFavouriteList,
+  updatePlayList,
+} from "../redux/actions";
+import {
+  favouriteListSelector,
+  playListSelector,
+  currentSongSelector,
+} from "../redux/selector";
+import MusicWave from "./MusicWave";
 
 function SongItem(props) {
   const info = props.info;
   const index = props.index + 1;
   const [isFavouriteItem, setFavouriteItem] = useState(false);
-  const [isAdded, setIsAdded] = useState(false);
   const [favouriteList, setFavouriteList] = useState(
     useSelector(favouriteListSelector)
   );
-  const [playList, setPlayList] = useState(
-    useSelector(playListSelector)
-  );
+  const playList = useSelector(playListSelector);
+  const currentSong = useSelector(currentSongSelector);
+  const isAdded = playList.includes(info);
   const dispath = useDispatch();
   const addFavoriteItem = () => {
     setFavouriteItem(!isFavouriteItem);
@@ -30,10 +38,22 @@ function SongItem(props) {
     dispath(updateFavouriteList(favouriteList));
   };
   const addPlayList = () => {
-    setIsAdded(!isAdded);
+    const newPlaylist = [...playList, info];
     playList.push(info);
-    dispath(updatePlayList(playList));
-  }
+    dispath(updatePlayList(newPlaylist));
+  };
+  const removePlayList = () => {
+    let newPlayList = [];
+    for (let item of playList) {
+      if (item.id !== info.id) {
+        newPlayList = [...newPlayList, item];
+      }
+    }
+    dispath(updatePlayList(newPlayList));
+  };
+  const playItem = () => {
+    dispath(setCurrentSong(info));
+  };
   const itemClicked = favouriteList.filter((item) => item.id === info.id)[0];
   return (
     <>
@@ -54,6 +74,15 @@ function SongItem(props) {
         </div>
         <div className="flex items-center gap-8 text-[#AFAFAF]">
           <span className="text-md">3:46</span>
+          {currentSong.src !== info.src ? (
+            <i
+              className="fa-solid fa-play text-md hover:text-white cursor-pointer transition-all w-7 text-center"
+              onClick={playItem}
+            ></i>
+          ) : (
+            <MusicWave></MusicWave>
+            // <i class="fa-solid fa-waveform-lines"></i>
+          )}
           {itemClicked !== undefined ? (
             <i
               className="fa-solid fa-heart text-md hover:text-white cursor-pointer transition-all"
@@ -65,7 +94,17 @@ function SongItem(props) {
               onClick={addFavoriteItem}
             ></i>
           )}
-          <i className="fa-solid fa-plus text-md hover:text-white cursor-pointer transition-all" onClick={addPlayList}></i>
+          {isAdded === false ? (
+            <i
+              className="fa-solid fa-plus text-md hover:text-white cursor-pointer transition-all"
+              onClick={addPlayList}
+            ></i>
+          ) : (
+            <i
+              className="fa-solid fa-trash text-md hover:text-white cursor-pointer transition-all"
+              onClick={removePlayList}
+            ></i>
+          )}
         </div>
       </div>
     </>

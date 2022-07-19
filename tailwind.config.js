@@ -5,8 +5,8 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        
+      animation: {
+        'spin-slow': 'spin 10s linear infinite',
       }
     },
   },

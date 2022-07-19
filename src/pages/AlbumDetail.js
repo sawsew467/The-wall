@@ -6,13 +6,28 @@ import ALBUM_LIST from "../data/albumList";
 import SONG_LIST from "../data/songList";
 import MiniPlayer from "../parts/MiniPlayer";
 import Navigation from "../parts/Navigation";
-import { albumDisplaySelector } from "../redux/selector";
+import { albumDisplaySelector, playListSelector } from "../redux/selector";
+import { useDispatch } from "react-redux";
+import { updatePlayList } from "../redux/actions";
 
 function AlbumDetail(props) {
+  const playList = useSelector(playListSelector);
   const idReducer = useSelector(albumDisplaySelector);
   const albumId = idReducer === "" ? "a000001" : idReducer;
   const infoAlbum = ALBUM_LIST.filter((item) => item.id === albumId)[0];
-  const songs = SONG_LIST.filter((item) => item.album === albumId)
+  const songs = SONG_LIST.filter((item) => item.album === albumId);
+  const dispath = useDispatch();
+  const playAllItem = () => {
+    let newPlaylist = playList;
+    for (let item of SONG_LIST) {
+      console.log(item, " ", albumId);
+      if (item.album === albumId) {
+        newPlaylist = [...newPlaylist, item];
+      }
+    }
+    // console.log(newPlaylist);
+    dispath(updatePlayList(newPlaylist));
+  };
   return (
     <>
       <div className="fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center p-10">
@@ -26,10 +41,10 @@ function AlbumDetail(props) {
           <div className="flex-1 p-4 h-full overflow-hidden overflow-y-scroll no-scrollbar">
             <div className="flex gap-4">
               <Link to="/albums">
-              <i className="fa-solid fa-arrow-left text-xl"></i>
+                <i className="fa-solid fa-arrow-left text-xl"></i>
               </Link>
               <p className="text-xl">
-              {`${infoAlbum.nameEn} - ${infoAlbum.nameVn} (${infoAlbum.released})`}
+                {`${infoAlbum.nameEn} - ${infoAlbum.nameVn} (${infoAlbum.released})`}
               </p>
             </div>
             <div className="flex items-end gap-4 my-4">
@@ -38,23 +53,22 @@ function AlbumDetail(props) {
                 className="w-1/4"
                 src={require("../assets/images/" + infoAlbum.img + ".png")}
               ></img>
-              <p className="text-sm leading-relaxed	">
-              {infoAlbum.desc}
-              </p>
+              <p className="text-sm leading-relaxed	">{infoAlbum.desc}</p>
             </div>
             <div className="flex justify-between">
               <p className="text-lg mb-4">Tracklist</p>
-              <button className="flex gap-2 items-center py-1 px-4 border-2 rounded-xl outline-none">
+              <button
+                className="flex gap-2 items-center py-1 px-4 border-2 rounded-xl outline-none"
+                onClick={playAllItem}
+              >
                 <i className="fa-solid fa-play"></i>
                 <span>Play</span>
               </button>
             </div>
             <div className="flex flex-col gap-4">
-                {
-                  songs.map((song, index) => (
-                    <SongItem key={index} info={song} index={index}></SongItem>
-                  ))
-                }
+              {songs.map((song, index) => (
+                <SongItem key={index} info={song} index={index}></SongItem>
+              ))}
             </div>
           </div>
           <MiniPlayer></MiniPlayer>

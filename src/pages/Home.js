@@ -17,7 +17,7 @@ function Home() {
   let bottomRef = useRef(null);
   let backgroundRef = useRef(null);
   const audioRef = useRef(null);
-
+console.log("audioRef: ", audioRef);
   useEffect(() => {
     isPlaying ? audioRef.current.play() : audioRef.current.pause();
     audioRef.current.volume = 0.2;
@@ -89,7 +89,7 @@ function Home() {
               <p className="font-bold text-lg">Ra khơi</p>
               {/* <img alt="" src={musicWave} className="mb-1"></img> */}
               <MusicWave></MusicWave>
-              <audio src={rakhoi} ref={audioRef}></audio>
+              <audio src={require("../assets/audio/rakhoi.mp3")} ref={audioRef}></audio>
             </div>
           </div>
           <div className="flex flex-col items-center">

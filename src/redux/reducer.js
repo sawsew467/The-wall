@@ -3,6 +3,7 @@ const initState = {
   albumDisplay: "",
   favouriteList: [],
   playList: [],
+  currentSong: {},
 };
 
 const rootReducer = (state = initState, action) => {
@@ -23,9 +24,18 @@ const rootReducer = (state = initState, action) => {
         favouriteList: action.payload,
       };
     case "playList/updatePlayList":
+      let newplayList = [];
+      newplayList = action.payload.filter(function (element) {
+        return newplayList.includes(element) ? "" : newplayList.push(element);
+      });
       return {
         ...state,
-        playList: action.payload,
+        playList: newplayList,
+      };
+    case "currentSong/setCurrentSong":
+      return {
+        ...state,
+        currentSong: action.payload,
       };
     default:
       return state;

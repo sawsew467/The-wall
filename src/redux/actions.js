@@ -22,3 +22,9 @@ export const updatePlayList = (data) => {
         payload: data,
     }
 }
+export const setCurrentSong = (data) => {
+    return {
+        type: "currentSong/setCurrentSong",
+        payload: data,
+    }
+}
