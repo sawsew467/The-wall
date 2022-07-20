@@ -17,7 +17,8 @@ const SONG_LIST = [
         nameVi: "Rock xuyên màn đêm",
         album: "a000001",
         img: "Tâm hồn của đá",
-        src: rockxuyenmandem
+        src: rockxuyenmandem,
+        time: "3:46",
     },
     {
         id: "s000002",
@@ -26,6 +27,7 @@ const SONG_LIST = [
         album: "a000001",
         img: "Tâm hồn của đá",
         src: bonghongthuytinh,
+        time: "4:30",
     },
     {
         id: "s000003",
@@ -33,7 +35,8 @@ const SONG_LIST = [
         nameVi: "Tâm hồn của đá",
         album: "a000001",
         img: "Tâm hồn của đá",
-        src: tamhoncuada
+        src: tamhoncuada,
+        time: "3:38"
     },
     {
         id: "s000004",
@@ -41,7 +44,8 @@ const SONG_LIST = [
         nameVi: "Ngày hôm qua",
         album: "a000001",
         img: "Tâm hồn của đá",
-        src: ngayhomqua
+        src: ngayhomqua,
+        time: "4:51"
     },
     {
         id: "s000005",
@@ -49,7 +53,8 @@ const SONG_LIST = [
         nameVi: "Chim hót trời xanh",
         album: "a000001",
         img: "Tâm hồn của đá",
-        src: chimhottroixanh
+        src: chimhottroixanh,
+        time: "5:03"
     },
     {
         id: "s000006",
@@ -58,6 +63,7 @@ const SONG_LIST = [
         album: "a000001",
         img: "Tâm hồn của đá",
         src: giotdang,
+        time: "4:19"
     },
     {
         id: "s000007",
@@ -65,7 +71,8 @@ const SONG_LIST = [
         nameVi: "Cơn mưa hoang dã",
         album: "a000001",
         img: "Tâm hồn của đá",
-        src: conmuahoangda
+        src: conmuahoangda,
+        time: "5:05"
     },
     {
         id: "s000008",
@@ -73,7 +80,8 @@ const SONG_LIST = [
         nameVi: "Người đàn bà hóa đá",
         album: "a000001",
         img: "Tâm hồn của đá",
-        src: nguoidanbahoada
+        src: nguoidanbahoada,
+        time: "4:33"
     },
     {
         id: "s000009",
@@ -81,7 +89,8 @@ const SONG_LIST = [
         nameVi: "Niềm tin cho cát bụi",
         album: "a000001",
         img: "Tâm hồn của đá",
-        src: niemtinchocatbui
+        src: niemtinchocatbui,
+        time: "3:46"
     },
     {
         id: "s000010",
@@ -89,7 +98,8 @@ const SONG_LIST = [
         nameVi: "Đường đến ngày vinh quang",
         album: "a000001",
         img: "Tâm hồn của đá",
-        src: duongdenngayvinhquang
+        src: duongdenngayvinhquang,
+        time: "5:30"
     },
     {
         id: "s000011",
@@ -97,7 +107,8 @@ const SONG_LIST = [
         nameVi: "Bài ca sông Hồng",
         album: "a000002",
         img: "Vô hình",
-        src: bonghongthuytinh
+        src: bonghongthuytinh,
+        time: ""
     },
     {
         id: "s000012",
@@ -105,7 +116,8 @@ const SONG_LIST = [
         nameVi: "Cây bàng",
         album: "a000002",
         img: "Vô hình",
-        src: bonghongthuytinh
+        src: bonghongthuytinh,
+        time: ""
     },
     {
         id: "s000013",
@@ -113,7 +125,8 @@ const SONG_LIST = [
         nameVi: "Con so 0",
         album: "a000002",
         img: "Vô hình",
-        src: bonghongthuytinh
+        src: bonghongthuytinh,
+        time: ""
     },
     {
         id: "s000014",
@@ -121,7 +134,8 @@ const SONG_LIST = [
         nameVi: "Khám phá",
         album: "a000002",
         img: "Vô hình",
-        src: bonghongthuytinh
+        src: bonghongthuytinh,
+        time: ""
     },
     {
         id: "s000015",
@@ -129,7 +143,8 @@ const SONG_LIST = [
         nameVi: "Mắt đen",
         album: "a000002",
         img: "Vô hình",
-        src: bonghongthuytinh
+        src: bonghongthuytinh,
+        time: ""
     },
 ]
 

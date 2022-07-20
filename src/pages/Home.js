@@ -1,10 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
-import musicWave from "../assets/images/wavemusic icon.svg";
-import mouse from "../assets/images/mouse.svg";
 import heading from "../assets/images/the wall.svg";
 import gsap from "gsap";
-import { Link, useNavigate } from "react-router-dom";
-import rakhoi from "../assets/audio/rakhoi.mp3";
+import { Link } from "react-router-dom";
 import MusicWave from "../components/MusicWave";
 
 function Home() {

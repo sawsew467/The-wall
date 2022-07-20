@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import SongItem from "../components/SongItem";
@@ -8,7 +8,8 @@ import MiniPlayer from "../parts/MiniPlayer";
 import Navigation from "../parts/Navigation";
 import { albumDisplaySelector, playListSelector } from "../redux/selector";
 import { useDispatch } from "react-redux";
-import { updatePlayList } from "../redux/actions";
+import { setCurrentSong, updatePlayList, setIsPlaying } from "../redux/actions";
+import AlbumWarningAleart from "../alerts/AlbumWarningAleart.js";
 
 function AlbumDetail(props) {
   const playList = useSelector(playListSelector);
@@ -18,19 +19,43 @@ function AlbumDetail(props) {
   const songs = SONG_LIST.filter((item) => item.album === albumId);
   const dispath = useDispatch();
   const playAllItem = () => {
-    let newPlaylist = playList;
+    let newPlaylist = [];
     for (let item of SONG_LIST) {
-      console.log(item, " ", albumId);
       if (item.album === albumId) {
         newPlaylist = [...newPlaylist, item];
       }
     }
-    // console.log(newPlaylist);
+    dispath(setCurrentSong(newPlaylist[0]));
+    dispath(setIsPlaying(true));
     dispath(updatePlayList(newPlaylist));
   };
+  const [isConfirm, setIsConfirm] = useState(false);
+  const callbackIsConfirm = (childData) => {
+    setIsConfirm(childData);
+    setIsDisplayAlert(false);
+  };
+  const [isDisplayAlert, setIsDisplayAlert] = useState(false);
+  useEffect(() => {
+    if (isConfirm === true) {
+      let newPlaylist = [];
+      for (let item of SONG_LIST) {
+        if (item.album === albumId) {
+          newPlaylist = [...newPlaylist, item];
+        }
+      }
+      dispath(setCurrentSong(newPlaylist[0]));
+      dispath(setIsPlaying(true));
+      dispath(updatePlayList(newPlaylist));
+    }
+  }, [isConfirm]);
   return (
     <>
       <div className="fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center p-10">
+        {isDisplayAlert && (
+          <AlbumWarningAleart
+            parentCallback={callbackIsConfirm}
+          ></AlbumWarningAleart>
+        )}
         <img
           alt=""
           src={require("../assets/images/background-2.png")}
@@ -59,7 +84,8 @@ function AlbumDetail(props) {
               <p className="text-lg mb-4">Tracklist</p>
               <button
                 className="flex gap-2 items-center py-1 px-4 border-2 rounded-xl outline-none"
-                onClick={playAllItem}
+                // onClick={playAllItem}
+                onClick={() => setIsDisplayAlert(!isDisplayAlert)}
               >
                 <i className="fa-solid fa-play"></i>
                 <span>Play</span>

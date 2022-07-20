@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useEffect, useState} from "react";
 import SongItem from "../components/SongItem";
 import Navigation from "../parts/Navigation";
 import { useSelector } from "react-redux";
-import { currentSongSelector, playListSelector } from "../redux/selector";
+import {
+  currentSongSelector,
+  isPlayingSelector,
+  playListSelector,
+} from "../redux/selector";
 import Control from "../components/Control";
 import { useDispatch } from "react-redux";
-import { updatePlayList } from "../redux/actions";
+import { setIsPlaying, updatePlayList } from "../redux/actions";
+import ClearWarningAleart from "../alerts/ClearWarningAleart.js";
 
 function Player(props) {
   const playList = useSelector(playListSelector);
@@ -14,10 +19,30 @@ function Player(props) {
   const clearAllPlayList = () => {
     const newPlayList = [];
     dispath(updatePlayList(newPlayList));
-  }
+    dispath(setIsPlaying(false));
+  };
+  const isPlaying = useSelector(isPlayingSelector);
+  const [isConfirm, setIsConfirm] = useState(false);
+  const callbackIsConfirm = (childData) => {
+    setIsConfirm(childData);
+    setIsDisplayAlert(false);
+  };
+  const [isDisplayAlert, setIsDisplayAlert] = useState(false);
+  useEffect(() => {
+    if (isConfirm === true) {
+      const newPlayList = [];
+      dispath(updatePlayList(newPlayList));
+      dispath(setIsPlaying(false));
+    }
+  }, [isConfirm]);
   return (
     <>
       <div className="fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center p-10">
+      {isDisplayAlert && (
+          <ClearWarningAleart
+            parentCallback={callbackIsConfirm}
+          ></ClearWarningAleart>
+        )}
         <img
           alt=""
           src={require("../assets/images/background-2.png")}
@@ -31,7 +56,11 @@ function Player(props) {
                 <img
                   alt=""
                   src={require("../assets/images/" + currentSong.img + ".png")}
-                  className="top-0 left-0 w-full rounded-full animate-spin-slow"
+                  className={
+                    isPlaying
+                      ? "top-0 left-0 w-full rounded-full animate-spin-slow"
+                      : "top-0 left-0 w-full rounded-full spin1"
+                  }
                 ></img>
                 <div className="absolute w-20 h-20 rounded-full border-4 border-[#AFAFAF] bg-black z-20"></div>
               </div>
@@ -43,9 +72,12 @@ function Player(props) {
             </div>
             <div className="flex justify-between items-center">
               <p className="text-lg my-4">Playlist</p>
-              <button className="flex gap-2 items-center py-1 px-4 border-2 rounded-xl outline-none">
+              <button
+                className="flex gap-2 items-center py-1 px-4 border-2 rounded-xl outline-none"
+                onClick={() => setIsDisplayAlert(!isDisplayAlert)}
+              >
                 <i className="fa-solid fa-trash"></i>
-                <span onClick={clearAllPlayList}>Clear</span>
+                <span>Clear</span>
               </button>
             </div>
             <div className="flex flex-col gap-4">

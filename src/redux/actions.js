@@ -28,3 +28,21 @@ export const setCurrentSong = (data) => {
         payload: data,
     }
 }
+export const setIsPlaying = (data) => {
+    return {
+        type: "isPlaying/setIsPlaying",
+        payload: data,
+    }
+}
+export const setPercentRange = (data) => {
+    return {
+        type: "percentRange/setPercentRange",
+        payload: data,
+    }
+}
+export const setTimeProgress = (data) => {
+    return {
+        type: "timeProgress/setTimeProgress",
+        payload: data,
+    }
+}

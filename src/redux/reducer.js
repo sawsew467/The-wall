@@ -1,9 +1,22 @@
+import rockxuyenmandem from "../assets/audio/ALBUM_TAM HON CUA DA/ROCK XUYEN MAN DEM.mp3";
+
 const initState = {
   showSettings: false,
   albumDisplay: "",
   favouriteList: [],
   playList: [],
-  currentSong: {},
+  currentSong: {
+    id: "s000001",
+    nameEn: "Rock through the night",
+    nameVi: "Rock xuyên màn đêm",
+    album: "a000001",
+    img: "Tâm hồn của đá",
+    // src: rockxuyenmandem,
+    time: "3:46",
+  },
+  isPlaying: false,
+  percentRange: 0,
+  timeProgress: 0,
 };
 
 const rootReducer = (state = initState, action) => {
@@ -36,6 +49,21 @@ const rootReducer = (state = initState, action) => {
       return {
         ...state,
         currentSong: action.payload,
+      };
+    case "isPlaying/setIsPlaying":
+      return {
+        ...state,
+        isPlaying: action.payload,
+      };
+    case "percentRange/setPercentRange":
+      return {
+        ...state,
+        percentRange: action.payload,
+      };
+    case "timeProgress/setTimeProgress":
+      return {
+        ...state,
+        timeProgress: action.payload,
       };
     default:
       return state;

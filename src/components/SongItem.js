@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setCurrentSong,
+  setIsPlaying,
   updateFavouriteList,
   updatePlayList,
 } from "../redux/actions";
@@ -53,6 +54,7 @@ function SongItem(props) {
   };
   const playItem = () => {
     dispath(setCurrentSong(info));
+    dispath(setIsPlaying(true));
   };
   const itemClicked = favouriteList.filter((item) => item.id === info.id)[0];
   return (
@@ -72,16 +74,15 @@ function SongItem(props) {
             <p className="text-md text-[#AFAFAF]">The Soul of Rock</p>
           </div>
         </div>
-        <div className="flex items-center gap-8 text-[#AFAFAF]">
-          <span className="text-md">3:46</span>
-          {currentSong.src !== info.src ? (
+        <div className="flex items-stretch gap-8 text-[#AFAFAF]">
+          <span className="text-md">{info.time}</span>
+          {currentSong.id !== info.id ? (
             <i
               className="fa-solid fa-play text-md hover:text-white cursor-pointer transition-all w-7 text-center"
               onClick={playItem}
             ></i>
           ) : (
             <MusicWave></MusicWave>
-            // <i class="fa-solid fa-waveform-lines"></i>
           )}
           {itemClicked !== undefined ? (
             <i
