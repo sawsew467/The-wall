@@ -1,10 +1,9 @@
 {
   "files": {
     "main.css": "/the-band-vietnam/static/css/main.97d23bf1.css",
-    "main.js": "/the-band-vietnam/static/js/main.adbe9bf0.js",
+    "main.js": "/the-band-vietnam/static/js/main.e04f943a.js",
     "static/js/787.b29359e8.chunk.js": "/the-band-vietnam/static/js/787.b29359e8.chunk.js",
     "static/media/DUONG DEN NGAY VINH QUANG.mp3": "/the-band-vietnam/static/media/DUONG DEN NGAY VINH QUANG.c9d5925f5fee4fb27923.mp3",
-    "static/media/CON MUA HOANG DA.mp3": "/the-band-vietnam/static/media/CON MUA HOANG DA.ef8b03dff44fc6b1876e.mp3",
     "static/media/CHIM HOT TROI XANH.mp3": "/the-band-vietnam/static/media/CHIM HOT TROI XANH.9efb87e0e4d1fdad716d.mp3",
     "static/media/NGAY HOM QUA.mp3": "/the-band-vietnam/static/media/NGAY HOM QUA.ce77f2efe06bb22f8ee6.mp3",
     "static/media/rakhoi.mp3": "/the-band-vietnam/static/media/rakhoi.baa35918a1bc29bcd70f.mp3",
@@ -28,11 +27,11 @@
     "static/media/the wall.svg": "/the-band-vietnam/static/media/the wall.3b0dee099e8833d1ebca1b5e91b341b2.svg",
     "index.html": "/the-band-vietnam/index.html",
     "main.97d23bf1.css.map": "/the-band-vietnam/static/css/main.97d23bf1.css.map",
-    "main.adbe9bf0.js.map": "/the-band-vietnam/static/js/main.adbe9bf0.js.map",
+    "main.e04f943a.js.map": "/the-band-vietnam/static/js/main.e04f943a.js.map",
     "787.b29359e8.chunk.js.map": "/the-band-vietnam/static/js/787.b29359e8.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.97d23bf1.css",
-    "static/js/main.adbe9bf0.js"
+    "static/js/main.e04f943a.js"
   ]
 }
