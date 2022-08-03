@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import {
   currentSongSelector,
   isPlayingSelector,
+  percentRangeSelector,
   playListSelector,
 } from "./redux/selector";
 import { useEffect, useRef } from "react";
@@ -25,7 +26,6 @@ function App() {
   useEffect(() => {
     isPlaying ? audioRef.current.play() : audioRef.current.pause();
     audioRef.current.volume = 0.2;
-    // console.log(audioRef.current.currentTime);
   }, [isPlaying]);
   const getCurrDuration = (e) => {
     const percent = (
@@ -42,8 +42,12 @@ function App() {
     }
     dispath(setPercentRange(percent));
     dispath(setTimeProgress(time));
-    // console.log("!!!", percent, time);
   };
+  const percentRange = useSelector(percentRangeSelector);
+  useEffect(() =>{
+    // percentRange && (audioRef.current.currentTime = audioRef.current.duration / 100 * percentRange);
+  }, [percentRange])
+  console.log("percentRange: ",percentRange);
   return (
     <>
       <audio
@@ -51,7 +55,7 @@ function App() {
         autoPlay={true}
         ref={audioRef}
         onTimeUpdate={getCurrDuration}
-        // onLoadedData={(e)=> {console.log(e)}}
+        onLoadedData={(e)=> {console.log(e)}}
       ></audio>
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>

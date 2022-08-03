@@ -3,6 +3,22 @@
 @tailwind utilities;
 
 @layer utilities {
+  .range::-webkit-slider-thumb {
+    /* background: #ccc; */
+    /* border: 1px solid #000000; */
+    border-radius: 50%;
+    cursor: pointer;
+    -webkit-appearance: none;
+  }
+  .range {
+    -webkit-appearance: none;
+    background-color: rgb(100 116 139);
+    height: 4px;
+    width: 100%;
+    cursor: pointer;
+    opacity: 1;
+    margin: 0 auto;
+}
   /* Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {
     display: none;

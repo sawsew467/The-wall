@@ -29,6 +29,7 @@ function Control() {
       dispath(setCurrentSong(playList[index + 1]));
   };
   const playBackwardAudio = () => {
+    // console.log("!!");
     const index = playList.indexOf(currentSong, playList);
     playList[index - 1] !== undefined &&
       dispath(setCurrentSong(playList[index - 1]));
@@ -40,7 +41,7 @@ function Control() {
       Math.round(timeProgress % 60) < 10
         ? "0" + Math.round(timeProgress % 60)
         : Math.round(timeProgress % 60);
-    console.log(minute);
+    // console.log(minute);
     return minute + ":" + seconds;
   };
   return (
@@ -50,11 +51,11 @@ function Control() {
       </p>
       <p className="text-xl text-[#AFAFAF]">{album.nameEn}</p>
       <div className="flex items-center gap-4 w-full">
-        <span className="text-lg text-[#AFAFAF]">
+        <span className="text-lg text-[#AFAFAF] w-1/12">
           {convertTimeProgress(timeProgress)}
         </span>
         <Range></Range>
-        <span className="text-lg text-[#AFAFAF]">{currentSong.time}</span>
+        <span className="text-lg text-[#AFAFAF] w-1/12">{currentSong.time}</span>
       </div>
       <div className="flex gap-4">
         <i
