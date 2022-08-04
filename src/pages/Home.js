@@ -84,7 +84,6 @@ console.log("audioRef: ", audioRef);
                 ></div>
               </div>
               <p className="font-bold text-lg">Ra khơi</p>
-              {/* <img alt="" src={musicWave} className="mb-1"></img> */}
               <MusicWave></MusicWave>
               <audio src={require("../assets/audio/rakhoi.mp3")} ref={audioRef}></audio>
             </div>

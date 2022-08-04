@@ -8,7 +8,7 @@ import conmuahoangda from "../assets/audio/ALBUM_TAM HON CUA DA/ROCK XUYEN MAN D
 import nguoidanbahoada from "../assets/audio/ALBUM_TAM HON CUA DA/NGUOI DAN BA HOA DA.mp3";
 import niemtinchocatbui from "../assets/audio/ALBUM_TAM HON CUA DA/NIEM TIN CHO CAT BUI.mp3";
 import duongdenngayvinhquang from "../assets/audio/ALBUM_TAM HON CUA DA/DUONG DEN NGAY VINH QUANG.mp3";
-// import giotdang from "../assets/audio/ALBUM_TAM HON CUA DA/TAM HON CUA DA.mp3";
+import chavacon from "../assets/audio/ALBUM_NAM CHAM/Cha-Va-Con-Buc-Tuong.mp3";
 
 const SONG_LIST = [
     {
@@ -144,6 +144,15 @@ const SONG_LIST = [
         album: "a000002",
         img: "Vô hình",
         src: bonghongthuytinh,
+        time: ""
+    },
+    {
+        id: "s000016",
+        nameEn: "Father and Children",
+        nameVi: "Cha và con",
+        album: "a000003",
+        img: "Nam Châm",
+        src: chavacon,
         time: ""
     },
 ]

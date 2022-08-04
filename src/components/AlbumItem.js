@@ -16,7 +16,7 @@ function AlbumItem(props) {
         <img
           alt=""
           src={require("../assets/images/" + infoAlbum.img + ".png")}
-          className="w-1/4"
+          className="w-1/4 rounded-xl"
         ></img>
         <div className="w-3/4 flex flex-col justify-end gap-1">
           <p className="text-xl">{`${infoAlbum.nameEn} - ${infoAlbum.nameVn} (${infoAlbum.released})`}</p>
